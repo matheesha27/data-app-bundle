@@ -12,7 +12,7 @@ import java.util.List;
 public class DataServices {
     private static List<Object> alerts = new ArrayList<>(Arrays.asList(
             new Alert(1, "alert", "N123", "Category 2", 250, DateUtils.createDateFromDateString("2020-05-01")),
-            new Alert(2, "alert", "N124", "Category 3", 320, DateUtils.createDateFromDateString("2020-05-05")),
+            new Alert(2, "alert", "N124", "Category 3", 300, DateUtils.createDateFromDateString("2020-05-05")),
             new Alert(3, "alert", "N125", "Category 1", 205, DateUtils.createDateFromDateString("2020-05-03")),
             new Alert(4, "alert", "N126", "Category 1", 220, DateUtils.createDateFromDateString("2020-05-13")),
             new Alert(5, "alert", "N127", "Category 3", 260, DateUtils.createDateFromDateString("2020-05-02")),

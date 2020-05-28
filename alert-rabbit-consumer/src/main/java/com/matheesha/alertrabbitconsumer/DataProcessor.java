@@ -2,6 +2,7 @@ package com.matheesha.alertrabbitconsumer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 import com.matheesha.alertrabbitconsumer.entity.Alert;
 import com.matheesha.alertrabbitconsumer.entity.MeterData;
 import com.matheesha.alertrabbitconsumer.repository.AlertRepository;
@@ -32,10 +33,18 @@ public class DataProcessor {
         LOGGER.info("Message Received: {}", dataString);
         try {
             JSONObject object = new JSONObject(dataString);
+            if (JsonPath.read(dataString, "$.eventName").equals("alert")) {
+                Alert alert = this.objectMapper.readValue(dataString, Alert.class);
+                alertRepository.save(alert);
+            }
+            /*
             if (object.getString("eventName").equals("alert")) {
                 Alert alert = this.objectMapper.readValue(dataString, Alert.class);
                 alertRepository.save(alert);
-            } else if (object.getString("eventName").equals("meterData")) {
+            }
+            */
+            else if (object.getString("eventName").equals("meterData")) {
+
                 MeterData meterData = this.objectMapper.readValue(dataString, MeterData.class);
                 meterDataRepository.save(meterData);
             } else {
