@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alert-rabbit-consumer/alert-rabbit-consumer.iml" filepath="$PROJECT_DIR$/alert-rabbit-consumer/alert-rabbit-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alert-rabbit-producer/alert-rabbit-producer.iml" filepath="$PROJECT_DIR$/alert-rabbit-producer/alert-rabbit-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alert-retrieve/alert-retrieve.iml" filepath="$PROJECT_DIR$/alert-retrieve/alert-retrieve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/data-app-bundle.iml" filepath="$PROJECT_DIR$/.idea/data-app-bundle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data-web-app/data-web-app.iml" filepath="$PROJECT_DIR$/data-web-app/data-web-app.iml" />
+    </modules>
+  </component>
+</project>
