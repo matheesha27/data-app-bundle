@@ -2,6 +2,7 @@ package com.matheesha.datawebapp.entity;
 
 public class MeterData {
     private long id;
+    private long deviceDefinitionId;
     private String eventName;
     private String serial;
     private double energyConsumption;
@@ -11,8 +12,9 @@ public class MeterData {
         super();
     }
 
-    public MeterData(long id, String eventName, String serial, double energyConsumption, boolean isPostpaid) {
+    public MeterData(long id, long deviceDefinitionId, String eventName, String serial, double energyConsumption, boolean isPostpaid) {
         this.id = id;
+        this.deviceDefinitionId = deviceDefinitionId;
         this.eventName = eventName;
         this.serial = serial;
         this.energyConsumption = energyConsumption;
@@ -57,5 +59,13 @@ public class MeterData {
 
     public void setPostpaid(boolean postpaid) {
         isPostpaid = postpaid;
+    }
+
+    public long getDeviceDefinitionId() {
+        return deviceDefinitionId;
+    }
+
+    public void setDeviceDefinitionId(long deviceDefinitionId) {
+        this.deviceDefinitionId = deviceDefinitionId;
     }
 }

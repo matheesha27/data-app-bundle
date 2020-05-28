@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Alert {
     private long id;
+    private long deviceDefinitionId;
     private String eventName;
     private String serial;
     private String category;
@@ -14,8 +15,9 @@ public class Alert {
         super();
     }
 
-    public Alert(long id, String eventName, String serial, String category, double voltage, Date updatedDate) {
+    public Alert(long id, long deviceDefinitionId, String eventName, String serial, String category, double voltage, Date updatedDate) {
         this.id = id;
+        this.deviceDefinitionId = deviceDefinitionId;
         this.eventName = eventName;
         this.serial = serial;
         this.category = category;
@@ -69,5 +71,13 @@ public class Alert {
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
+    }
+
+    public long getDeviceDefinitionId() {
+        return deviceDefinitionId;
+    }
+
+    public void setDeviceDefinitionId(long deviceDefinitionId) {
+        this.deviceDefinitionId = deviceDefinitionId;
     }
 }

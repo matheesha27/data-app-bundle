@@ -1,4 +1,4 @@
-package com.matheesha.datawebapp.entity;
+package com.matheesha.alertrabbitconsumer.entity;
 
 public class EventParameters {
     private String name;

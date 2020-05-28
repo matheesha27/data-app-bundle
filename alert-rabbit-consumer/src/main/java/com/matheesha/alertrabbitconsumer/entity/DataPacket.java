@@ -1,10 +1,20 @@
-package com.matheesha.datawebapp.entity;
+package com.matheesha.alertrabbitconsumer.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection = "Data_Packets_filtered")
 public class DataPacket {
+    @Id
     private long id;
+    @Field("devDefId")
     private long deviceDefinitionId;
+    @Field("event")
     private String eventName;
+    @Field("evtParam")
     private EventParameters eventParameters;
+    @Field("type")
     private String type;
 
     public DataPacket() {
