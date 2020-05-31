@@ -3,13 +3,13 @@ package com.matheesha.alertrabbitconsumer.entity;
 public class EventParameters {
     private String name;
     private String type;
-    private long value;
+    private double value;
 
     public EventParameters() {
         super();
     }
 
-    public EventParameters(String name, String type, long value) {
+    public EventParameters(String name, String type, double value) {
         this.name = name;
         this.type = type;
         this.value = value;
@@ -31,11 +31,21 @@ public class EventParameters {
         this.type = type;
     }
 
-    public long getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(long value) {
+    public void setValue(double value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("name=").append(name);
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", value='").append(value).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

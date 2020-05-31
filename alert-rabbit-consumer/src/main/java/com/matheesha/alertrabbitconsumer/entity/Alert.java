@@ -6,10 +6,12 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 
-@Document(collection = "NMD_Alerts_filtered")
+@Document(collection = "NMD_Alerts_filtered_2")
 public class Alert {
     @Id
     private long id;
+    @Field("devDefId")
+    private long deviceDefinitionId;
     @Field("event")
     private String eventName;
     @Field("ser")
@@ -25,8 +27,9 @@ public class Alert {
         super();
     }
 
-    public Alert(long id, String eventName, String serial, String category, double voltage, Date updatedDate) {
+    public Alert(long id, long deviceDefinitionId, String eventName, String serial, String category, double voltage, Date updatedDate) {
         this.id = id;
+        this.deviceDefinitionId = deviceDefinitionId;
         this.eventName = eventName;
         this.serial = serial;
         this.category = category;
@@ -82,10 +85,19 @@ public class Alert {
         this.eventName = eventName;
     }
 
+    public long getDeviceDefinitionId() {
+        return deviceDefinitionId;
+    }
+
+    public void setDeviceDefinitionId(long deviceDefinitionId) {
+        this.deviceDefinitionId = deviceDefinitionId;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Alert{");
         sb.append("id=").append(id);
+        sb.append(", deviceDefinitionId='").append(deviceDefinitionId).append('\'');
         sb.append(", eventName='").append(eventName).append('\'');
         sb.append(", serial='").append(serial).append('\'');
         sb.append(", category='").append(category).append('\'');

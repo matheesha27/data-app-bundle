@@ -43,6 +43,7 @@ public class DataProcessor {
                     Alert alert = this.objectMapper.readValue(dataString, Alert.class);
                     alertRepository.save(alert);
                 }
+
             } else if (JsonPath.read(dataString, "$.deviceDefinitionId").equals(2)) {
                 if (JsonPath.read(dataString, "$.eventName").equals("meterData")) {
                     MeterData meterData = this.objectMapper.readValue(dataString, MeterData.class);
@@ -51,6 +52,7 @@ public class DataProcessor {
                     DataPacket dataPacket = this.objectMapper.readValue(dataString, DataPacket.class);
                     dataPacketRepository.save(dataPacket);
                 }
+
             } else {
                 LOGGER.info("Other object type found");
             }

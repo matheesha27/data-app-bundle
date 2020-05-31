@@ -4,10 +4,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "Meter_Data_filtered")
+@Document(collection = "Meter_Data_filtered_2")
 public class MeterData {
     @Id
     private long id;
+    @Field("devDefId")
+    private long deviceDefinitionId;
     @Field("event")
     private String eventName;
     @Field("ser")
@@ -21,8 +23,9 @@ public class MeterData {
         super();
     }
 
-    public MeterData(long id, String eventName, String serial, double energyConsumption, boolean isPostpaid) {
+    public MeterData(long id, long deviceDefinitionId, String eventName, String serial, double energyConsumption, boolean isPostpaid) {
         this.id = id;
+        this.deviceDefinitionId = deviceDefinitionId;
         this.eventName = eventName;
         this.serial = serial;
         this.energyConsumption = energyConsumption;
@@ -67,5 +70,13 @@ public class MeterData {
 
     public void setPostpaid(boolean postpaid) {
         isPostpaid = postpaid;
+    }
+
+    public long getDeviceDefinitionId() {
+        return deviceDefinitionId;
+    }
+
+    public void setDeviceDefinitionId(long deviceDefinitionId) {
+        this.deviceDefinitionId = deviceDefinitionId;
     }
 }

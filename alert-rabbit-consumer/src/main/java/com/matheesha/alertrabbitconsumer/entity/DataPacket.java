@@ -4,7 +4,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "Data_Packets_filtered")
+import java.util.Date;
+import java.util.List;
+
+@Document(collection = "Data_Packets_filtered_2")
 public class DataPacket {
     @Id
     private long id;
@@ -13,20 +16,20 @@ public class DataPacket {
     @Field("event")
     private String eventName;
     @Field("evtParam")
-    private EventParameters eventParameters;
-    @Field("type")
-    private String type;
+    private List eventParameters;
+    @Field("date")
+    private Date date;
 
     public DataPacket() {
         super();
     }
 
-    public DataPacket(long id, long deviceDefinitionId, String eventName, EventParameters eventParameters, String type) {
+    public DataPacket(long id, long deviceDefinitionId, String eventName, List eventParameters, Date date) {
         this.id = id;
         this.deviceDefinitionId = deviceDefinitionId;
         this.eventName = eventName;
         this.eventParameters = eventParameters;
-        this.type = type;
+        this.date = date;
     }
 
     public long getId() {
@@ -53,19 +56,19 @@ public class DataPacket {
         this.eventName = eventName;
     }
 
-    public EventParameters getEventParameters() {
+    public List getEventParameters() {
         return eventParameters;
     }
 
-    public void setEventParameters(EventParameters eventParameters) {
+    public void setEventParameters(List eventParameters) {
         this.eventParameters = eventParameters;
     }
 
-    public String getType() {
-        return type;
+    public Date getDate() {
+        return date;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
