@@ -13,14 +13,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.json.*;
-
-import javax.xml.crypto.Data;
 
 @Component
 public class DataProcessor {
     private final ObjectMapper objectMapper;
     private static final Logger LOGGER = LoggerFactory.getLogger(DataProcessor.class);
+
+    private static final String DEVICE_DEF_ID = "$.deviceDefinitionId";
+    private static final String EVENT_NAME = "$.eventName";
+    private static final int METER_DEVICE_DEF_ID = 1;
+    private static final int NMD_DEVICE_DEF_ID = 2;
 
     @Autowired
     public DataProcessor(ObjectMapper objectMapper) {
@@ -38,17 +40,17 @@ public class DataProcessor {
     public void receiveMessage(String dataString) {
         LOGGER.info("Message Received: {}", dataString);
         try {
-            if (JsonPath.read(dataString, "$.deviceDefinitionId").equals(1)) {
-                if (JsonPath.read(dataString, "$.eventName").equals("alert")) {
+            if (JsonPath.read(dataString, DEVICE_DEF_ID).equals(METER_DEVICE_DEF_ID)) {
+                if (JsonPath.read(dataString, EVENT_NAME).equals("alert")) {
                     Alert alert = this.objectMapper.readValue(dataString, Alert.class);
                     alertRepository.save(alert);
                 }
 
-            } else if (JsonPath.read(dataString, "$.deviceDefinitionId").equals(2)) {
-                if (JsonPath.read(dataString, "$.eventName").equals("meterData")) {
+            } else if (JsonPath.read(dataString, DEVICE_DEF_ID).equals(NMD_DEVICE_DEF_ID)) {
+                if (JsonPath.read(dataString, EVENT_NAME).equals("meterData")) {
                     MeterData meterData = this.objectMapper.readValue(dataString, MeterData.class);
                     meterDataRepository.save(meterData);
-                } else if (JsonPath.read(dataString, "$.eventName").equals("dataPacket")) {
+                } else if (JsonPath.read(dataString, EVENT_NAME).equals("dataPacket")) {
                     DataPacket dataPacket = this.objectMapper.readValue(dataString, DataPacket.class);
                     dataPacketRepository.save(dataPacket);
                 }

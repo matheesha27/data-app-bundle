@@ -26,9 +26,15 @@ public class DataPacketService {
         return dataPacketList;
     }
 
-    public List<DataPacket> getTotalEnergy() {
+    public List<DataPacket> getAllByDate(long beginDate, long endDate) {
+        List<DataPacket> dataByDateList = new ArrayList<>();
+        this.dataPacketRepository.getAllByDate(beginDate, endDate).forEach(dataByDateList::add);
+        return dataByDateList;
+    }
+
+    public List<DataPacket> getTotalEnergy(long beginDate, long endDate, long floor) {
         List<DataPacket> totalEnergyList = new ArrayList<>();
-        this.dataPacketRepository.getTotalEnergy().forEach(totalEnergyList::add);
+        this.dataPacketRepository.getTotalEnergy(beginDate, endDate, floor).forEach(totalEnergyList::add);
         return totalEnergyList;
     }
 

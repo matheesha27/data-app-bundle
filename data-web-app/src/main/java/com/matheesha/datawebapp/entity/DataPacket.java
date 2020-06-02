@@ -1,7 +1,5 @@
 package com.matheesha.datawebapp.entity;
 
-
-import java.util.Date;
 import java.util.List;
 
 public class DataPacket {
@@ -9,13 +7,13 @@ public class DataPacket {
     private long deviceDefinitionId;
     private String eventName;
     private List eventParameters;
-    private Date date;
+    private long date;
 
     public DataPacket() {
         super();
     }
 
-    public DataPacket(long id, long deviceDefinitionId, String eventName, List eventParameters, Date date) {
+    public DataPacket(long id, long deviceDefinitionId, String eventName, List eventParameters, long date) {
         this.id = id;
         this.deviceDefinitionId = deviceDefinitionId;
         this.eventName = eventName;
@@ -55,11 +53,11 @@ public class DataPacket {
         this.eventParameters = eventParameters;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

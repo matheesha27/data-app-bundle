@@ -22,6 +22,9 @@ public class AlertPrimer implements CommandLineRunner {
     @Value("${amqp.queue.name}")
     private String queueName;
 
+    @Value("${data.url}")
+    private String url;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(AlertPrimer.class);
 
     private RestTemplate restTemplate;
@@ -39,8 +42,7 @@ public class AlertPrimer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... strings) throws Exception {
-        String url = "http://localhost:8080/data";
+    public void run(String... strings) {
         Object[] dataArray = this.restTemplate.getForObject(url, Object[].class);
         List<Object> allData = Arrays.asList(dataArray);
 

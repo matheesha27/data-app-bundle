@@ -4,10 +4,7 @@ import com.matheesha.alertretrieve.service.AlertServices;
 import com.matheesha.alertretrieve.DateUtils;
 import com.matheesha.alertretrieve.entity.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -30,17 +27,17 @@ public class AlertRetrieveController {
     }
 
     @GetMapping("/{id}")
-    public List<Alert> getIdLessThan(@PathVariable int id) {
+    public List<Alert> getIdLessThan(@PathVariable(name = "id") int id) {
         return this.alertServices.getById(id);
     }
 
     @GetMapping("/voltage")
-    public List<Alert> getVoltageInRange(double min, double max) {
+    public List<Alert> getVoltageInRange(@RequestParam(name = "min") double min, @RequestParam(name = "max") double max) {
         return this.alertServices.getVoltageInRange(min, max);
     }
 
     @GetMapping("/category")
-    public List<Alert> getVoltageInRange(int type) {
+    public List<Alert> getVoltageInRange(@RequestParam(name = "type") int type) {
         return this.alertServices.getCategory(type);
     }
 
