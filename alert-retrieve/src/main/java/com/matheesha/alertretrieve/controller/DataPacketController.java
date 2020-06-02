@@ -26,4 +26,14 @@ public class DataPacketController {
     public List<DataPacket> getAllPackets() {
         return this.dataPacketService.getAllPackets();
     }
+
+    @GetMapping("/totalenergy")
+    public List<DataPacket> getTotalEnergy() {
+        return this.dataPacketService.getTotalEnergy();
+    }
+
+    @GetMapping("/monthlyenergy")
+    public List<DataPacket> getMonthlyEnergy(long floor) {
+        return dataPacketService.getMonthlyEnergy(floor);
+    }
 }

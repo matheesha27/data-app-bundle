@@ -26,4 +26,16 @@ public class DataPacketService {
         return dataPacketList;
     }
 
+    public List<DataPacket> getTotalEnergy() {
+        List<DataPacket> totalEnergyList = new ArrayList<>();
+        this.dataPacketRepository.getTotalEnergy().forEach(totalEnergyList::add);
+        return totalEnergyList;
+    }
+
+    public List<DataPacket> getMonthlyEnergy(long floor) {
+        List<DataPacket> monthlyEnergyList = new ArrayList<>();
+        this.dataPacketRepository.getMonthlyEnergy(floor).forEach(monthlyEnergyList::add);
+        return monthlyEnergyList;
+    }
+
 }

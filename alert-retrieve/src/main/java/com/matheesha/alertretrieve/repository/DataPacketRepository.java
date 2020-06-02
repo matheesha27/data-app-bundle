@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface DataPacketRepository extends MongoRepository<DataPacket, Long> {
 
-    //@Query(value = "")
-    //List<DataPacket> getTotalEnergy();
+    @Query(value = "{'date': {$gte: ISODate('2020-05-01'),$lte: ISODate('2020-05-05')}, 'evtParam': {$elemMatch: {name: \"monthEngKwh\", value: {$gt:250}}}}")
+    List<DataPacket> getTotalEnergy();
+
+    @Query(value = "{evtParam: {$elemMatch: {name: \"monthEngKwh\", value: {$gt:?0}}}}")
+    List<DataPacket> getMonthlyEnergy(long floor);
+
 }
